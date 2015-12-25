@@ -16,7 +16,6 @@ public class AppApplication  extends Application{
 
     private AppComponent appComponent;
 
-
     public static AppApplication get(Context context){
         return (AppApplication)context.getApplicationContext();
     }

@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import me.gudong.dagger.mvp.model.entity.Gank;
 import me.gudong.dagger.mvp.presenters.MainActivityPresenter;
 import me.gudong.dagger.mvp.views.IMainView;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+        initTitleBar(false,getString(R.string.app_name));
         presenter.attachView(this);
         presenter.onCreate();
     }
@@ -75,11 +77,17 @@ public class MainActivity extends BaseActivity implements IMainView {
                         .load(gank.url)
                         .noFade()
                         .into(mIvImage);
+                mIvImage.setTag(gank.url);
             } else {
                 TextView tv = new TextView(this);
                 tv.setText(gank.desc);
                 mLlContainer.addView(tv);
             }
         }
+    }
+
+    @OnClick(R.id.iv_image)
+    public void clickMeizi(){
+        MeiziActivity.gotoMeizi(this,(String)mIvImage.getTag());
     }
 }
