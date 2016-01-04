@@ -1,6 +1,12 @@
 package me.gudong.dagger.ui.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,9 +49,38 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-        initTitleBar(false,getString(R.string.app_name));
+        setTitleBar(false,getString(R.string.app_name));
         presenter.attachView(this);
         presenter.onCreate();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_about:
+                new AlertDialog.Builder(this)
+                        .setTitle("关于")
+                        .setMessage("GankDagger2 一个 MVP + Dagger2 组合后的简单 Demo,\n\n项目地址：https://github.com/maoruibin/GankDagger2")
+                        .setPositiveButton("确定",null)
+                        .setNeutralButton("去查看项目", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Uri uri = Uri.parse("https://github.com/maoruibin/GankDagger2");
+                                Intent it  = new Intent(Intent.ACTION_VIEW,uri);
+                                startActivity(it);
+                            }
+                        })
+                        .show();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -77,7 +112,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                         .load(gank.url)
                         .noFade()
                         .into(mIvImage);
-                mIvImage.setTag(gank.url);
+                mIvImage.setTag(gank);
             } else {
                 TextView tv = new TextView(this);
                 tv.setText(gank.desc);
@@ -88,6 +123,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @OnClick(R.id.iv_image)
     public void clickMeizi(){
-        MeiziActivity.gotoMeizi(this,(String)mIvImage.getTag());
+        MeiziActivity.gotoMeizi(this,(Gank)mIvImage.getTag());
     }
+
 }

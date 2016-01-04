@@ -1,7 +1,6 @@
 package me.gudong.dagger.ui.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setupActivityComponent(AppApplication.get(this).getAppComponent());
     }
 
-    protected void initTitleBar(boolean enabled,String title){
+    protected void setTitleBar(boolean enabled, String title){
         getSupportActionBar().setHomeButtonEnabled(enabled);
         getSupportActionBar().setDisplayHomeAsUpEnabled(enabled);
         getSupportActionBar().setTitle(title);
