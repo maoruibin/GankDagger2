@@ -1,6 +1,6 @@
 # GankDagger2
 
-一个使用 MVP 架构，并结合 Dagger2、Retrofit2、RxJava组合后的简单示例 Demo。
+一个使用 MVP 架构，并组合 Dagger2、Retrofit2、RxJava 等技术点而成简单示例 Demo。
 
 ## Description
 
