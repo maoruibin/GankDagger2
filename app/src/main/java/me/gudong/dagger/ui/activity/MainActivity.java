@@ -66,7 +66,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.menu_about:
                 new AlertDialog.Builder(this)
                         .setTitle("关于")
-                        .setMessage("GankDagger2 一个 MVP + Dagger2 组合后的简单 Demo,\n\n项目地址：https://github.com/maoruibin/GankDagger2")
+                        .setMessage("GankDagger2 一个 MVP + Dagger2 + Retrofit2 组合后的简单 Demo,\n\n项目地址：https://github.com/maoruibin/GankDagger2")
                         .setPositiveButton("确定",null)
                         .setNeutralButton("去查看项目", new DialogInterface.OnClickListener() {
                             @Override
@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 mIvImage.setTag(gank);
             } else {
                 TextView tv = new TextView(this);
-                tv.setText(gank.desc);
+                tv.setText(gank.desc+"( via"+gank.who+")");
                 mLlContainer.addView(tv);
             }
         }

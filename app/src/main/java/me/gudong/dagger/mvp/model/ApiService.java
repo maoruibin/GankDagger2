@@ -2,8 +2,8 @@ package me.gudong.dagger.mvp.model;
 
 
 import me.gudong.dagger.mvp.model.entity.GankData;
-import retrofit.http.GET;
-import retrofit.http.Path;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**
@@ -12,6 +12,6 @@ import rx.Observable;
  */
 public interface ApiService {
 
-    @GET("/day/{year}/{month}/{day}")
+    @GET("day/{year}/{month}/{day}")
     Observable<GankData> getGankData(@Path("year")int year, @Path("month")int month, @Path("day")int day);
 }

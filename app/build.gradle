@@ -34,10 +34,18 @@ dependencies {
 
     // Square
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.okhttp:okhttp:2.3.0'
+
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+
+    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.1'
+
+
 
     // ReactiveX
     compile 'io.reactivex:rxandroid:1.0.0'

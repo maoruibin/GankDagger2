@@ -13,6 +13,7 @@ import me.gudong.dagger.mvp.views.IMainView;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by GuDong on 2015/6/10.
@@ -48,6 +49,7 @@ public class MainActivityPresenter {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         api.getGankData(year, month, day)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Func1<GankData, GankData.Result>() {
                     @Override

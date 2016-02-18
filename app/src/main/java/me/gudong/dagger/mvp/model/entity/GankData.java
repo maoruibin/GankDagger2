@@ -13,6 +13,7 @@ public class GankData {
     public boolean error;
 
     public List<String> category;
+
     public Result results;
 
     public class Result {
